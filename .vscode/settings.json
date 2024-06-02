@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "redirect.h": "c",
+        "stdio.h": "c",
+        "criterion.h": "c"
+    }
+}
