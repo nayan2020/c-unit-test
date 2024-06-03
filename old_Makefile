@@ -1,0 +1,46 @@
+# Tool definations
+CC ?= gcc
+CXX ?= g++
+
+# Settings
+SRC_DIR = ./src 
+TEST_DIR = ./tests
+BUILD_DIR = .
+NAME = app.elf
+
+# Search path for headers files
+CFLAGS += -I$(SRC_DIR)/average
+
+# List module sources file
+CSOURCES = $(SRC_DIR)/main.c 
+CSOURCES += $(wildcard $(SRC_DIR)/average/*.c)
+
+# Compiler flags
+CFLAGS += -Wall
+
+# Linker flags
+LDFLAGS += 
+
+# Generate name for the output objects files (*.o)
+COBJECTS = $(patsubst %.c, %.o, $(CSOURCES))
+
+# Default rules: build application
+.PHONY: all
+all: $(NAME)
+
+# Build components
+$(objects) : %.o : %.c
+%.o : %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Build the target application
+.PHONY: $(NAME)
+$(NAME): $(COBJECTS)
+	$(CC) $(COBJECTS) -o $(BUILD_DIR)/$(NAME) $(LDFLAGS)
+
+# Remove compiled object files
+.PHONY: clean
+$(clean): 
+	rm -f $(COBJECTS)
+
+

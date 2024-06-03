@@ -1,0 +1,8 @@
+# C/C++ Outputs
+.o 
+.obj
+.out 
+.elf
+
+#CppUTest frameWorks
+cpputest/
