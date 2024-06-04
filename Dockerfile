@@ -58,8 +58,9 @@ RUN mkdir /project/tools/ && \
     wget https://github.com/cpputest/cpputest/releases/download/latest-passing-build/cpputest-latest.tar.gz && \
     mkdir /tools && \
     tar fx cpputest-latest.tar.gz && \
-    mv cpputest-latest /tools/cpputest && \
-    cd /tools/cpputest/ && \
+    cp -r cpputest-latest tools/cpputest && \
+    rm -rf cpputest-latest && \
+    cd tools/cpputest/ && \
     autoreconf -i && \
     ./configure && \
     make
